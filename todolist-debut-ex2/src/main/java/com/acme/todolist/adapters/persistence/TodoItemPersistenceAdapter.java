@@ -1,14 +1,20 @@
 package com.acme.todolist.adapters.persistence;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.acme.todolist.application.port.out.LoadTodoItem;
 import com.acme.todolist.application.port.out.UpdateTodoItem;
+
 import com.acme.todolist.domain.TodoItem;
 
 /**
@@ -18,7 +24,7 @@ import com.acme.todolist.domain.TodoItem;
  *
  */
 @Component
-public class TodoItemPersistenceAdapter implements LoadTodoItem,UpdateTodoItem {
+public class TodoItemPersistenceAdapter implements LoadTodoItem,UpdateTodoItem{
 
 	private TodoItemRepository todoItemRepository;
 
@@ -36,7 +42,11 @@ public class TodoItemPersistenceAdapter implements LoadTodoItem,UpdateTodoItem {
 		return this.todoItemRepository.findAll().stream()
 				.map(todoItemJpaEntory -> mapper.mapToTodoItem(todoItemJpaEntory)).collect(Collectors.toList());
 	}
-
-	// A compléter
+	@Override
+	public void storeNewTodoItem(TodoItem item) {
+		// à faire
+		//on suppose un item comme visible par défaut à son ajout
+		this.todoItemRepository.save(new TodoItemJpaEntity(item.getId(), item.getTime(), item.getContent(), true));
+	}
 
 }

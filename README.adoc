@@ -5,7 +5,7 @@ NOTE: TP de deux slots de 1h20
 ## Nom du(des) √©tudiant(e)(s) de ce mon√¥me/bin√¥me 
 WARNING: NE PAS OUBLIER DE MENTIONNER LES DEUX NOMS SI VOUS ETES EN BINOME!
 
-#XXX# (et #YYY#)
+Binbing Ning et Lucas Douillard
 
 Commentaires √©ventuels des √©tudiants : #XXXXXX#
 
@@ -38,23 +38,29 @@ TIP: [Rappel Git] Trois d√©p√¥ts sont ici utilis√©s: le d√©pot Github de l'ensei
 * Observer le code du projet `todolist-debut-ex1`
 
 *Le code est-il structur√© en couches ? Quel probl√®mes ce code peut-il poser ?*
+Non, il a une architecture monolithique, cela peut poser problËme en terme de facilitÈ d'Èvolution du programme les composants Ètant fortement interdÈpendants.
 
 *O√π se trouve le code m√©tier (voir la r√®gle de gestion RG 1) ?*
+Le code mÈtier se trouve dans le document TodoListController.java
 
 *Cette r√®gle est-elle facilement testable par un test unitaire ?*
+Non, elle ne l'est pas, car tout d'abord la mÈthode a une visibilitÈ dÈfinie sur private ce qui forcera ‡ faire le test dans la classe TodoListController, s'ajoutant a cela diverses problÈmatiques telles que les rËgles de gestion de Spring notamment.
 
 * Lancer une base PostgreSQL en Docker dans un terminal (on lance ici la base en mode interactif pour visualiser son activit√©. Pour la lancer en t√¢che de fond, remplacer les options `it` par `d` comme 'daemon'):
 ```bash
 docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
 *Expliquer cette ligne de commande (y compris les options utilis√©es)*
+On lance un serveur postgres sur docker avec des options -e qui permet d'ajouter des variables d'environnement, ici un mot de passe ‡ la base de donnÈes crÈÈ, et -p qui permet de "publier" un port du conteneur ‡ l'hÙte, de lui donner accËs ‡ la base via ce port.
 
 * Compl√©ter le code manquant dans la m√©thode `TodoListController.createTodoItem()`
 
+
 *Pourquoi `todoItemRepository` est-il `null` ? Quelle est la meilleure fa√ßon de l'injecter ?*
+Car il manque une instruction d'injection au niveau du constructeur de TodoListController
+il faudra donc ajouter @Inject au dessus du contructeur.
 
 * Modifier le code en cons√©quence.
-
 * Tester vos endpoints avec un client REST.
 
 
@@ -93,6 +99,10 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
   - la couche `domain` qui contient les entit√©s (au sens DDD, pas au sens JPA). En g√©n√©ral des classes complexes (m√©thodes riches, relations entre les entit√©s)
 
 *Rappeler en quelques lignes les grands principes de l'architecture hexagonale.*
+Les dÈpendances sont de l'extÈrieur vers l'intÈrieur
+sÈparer les ÈlÈments en deux parties intÈrieur (use-cases,ports et entitÈs) et extÈrieur (Adapteurs etc)
+Pattern Port adapter (adapter permettant d'abstraire l'intÈrieur de l'hexagone et donc de conserver les dÈpendances de l'extÈrieur vers l'intÈrieur)
+limiter le couplage entre les composants
 
 Compl√©ter ce code avec une fonctionnalit√© de cr√©ation de `TodoItem`  persist√© en base et appel√© depuis un endpoint REST `POST /todos` qui :
 
@@ -109,8 +119,10 @@ _Temps estim√© : 20 mins_
 * Impl√©menter (en junit) des TU sur la r√®gle de gestion qui consiste √† afficher `[LATE!]` dans la description d'un item en retard de plus de 24h.
 
 *Quels types de tests devra-t-on √©crire pour les adapteurs ?* 
+On devra Ècrire des test d'intÈgration. (indiquÈ ‡ 46:32 dans la vidÈo fournie) 
 
 *Que teste-on dans ce cas ?*
+Si le ou les rÈsultats renvoyÈs sont conformes ‡ ce que le client voudrait.
 
 *S'il vous reste du temps, √©crire quelques uns de ces types de test.*
 
