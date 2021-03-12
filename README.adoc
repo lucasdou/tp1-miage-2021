@@ -7,7 +7,7 @@ WARNING: NE PAS OUBLIER DE MENTIONNER LES DEUX NOMS SI VOUS ETES EN BINOME!
 
 Binbing Ning et Lucas Douillard
 
-Commentaires Ã©ventuels des Ã©tudiants : #XXXXXX#
+Commentaires Ã©ventuels des Ã©tudiants : #Lucas a rencontré quelques problème pour l'utilisation de la VM il a donc dû installer les différents outils manuellement.#
 
 ## PrÃ©-requis 
 
@@ -58,7 +58,7 @@ On lance un serveur postgres sur docker avec des options -e qui permet d'ajouter
 
 *Pourquoi `todoItemRepository` est-il `null` ? Quelle est la meilleure faÃ§on de l'injecter ?*
 Car il manque une instruction d'injection au niveau du constructeur de TodoListController
-il faudra donc ajouter @Inject au dessus du contructeur.
+il faudra donc ajouter @Inject au-dessus du constructeur.
 
 * Modifier le code en consÃ©quence.
 * Tester vos endpoints avec un client REST.
@@ -99,10 +99,10 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
   - la couche `domain` qui contient les entitÃ©s (au sens DDD, pas au sens JPA). En gÃ©nÃ©ral des classes complexes (mÃ©thodes riches, relations entre les entitÃ©s)
 
 *Rappeler en quelques lignes les grands principes de l'architecture hexagonale.*
-Les dépendances sont de l'extérieur vers l'intérieur
-séparer les éléments en deux parties intérieur (use-cases,ports et entités) et extérieur (Adapteurs etc)
-Pattern Port adapter (adapter permettant d'abstraire l'intérieur de l'hexagone et donc de conserver les dépendances de l'extérieur vers l'intérieur)
-limiter le couplage entre les composants
+Les dépendances sont de l'extérieur vers l'intérieur.
+Séparer les éléments en deux parties intérieures (use-cases, ports et entités) et extérieures (Adapteurs etc).
+Pattern Port adapter (adapter permettant d'abstraire l'intérieur de l'hexagone et donc de conserver les dépendances de l'extérieur vers l'intérieur).
+Limiter le couplage entre les composants.
 
 ComplÃ©ter ce code avec une fonctionnalitÃ© de crÃ©ation de `TodoItem`  persistÃ© en base et appelÃ© depuis un endpoint REST `POST /todos` qui :
 
@@ -117,6 +117,7 @@ _Temps estimÃ© : 20 mins_
 * Rester sur le mÃªme code que l'exercice 2
 
 * ImplÃ©menter (en junit) des TU sur la rÃ¨gle de gestion qui consiste Ã  afficher `[LATE!]` dans la description d'un item en retard de plus de 24h.
+(Implémenté dans la classe TodoItemTests qui se trouve dans le package domain)
 
 *Quels types de tests devra-t-on Ã©crire pour les adapteurs ?* 
 On devra écrire des test d'intégration. (indiqué à 46:32 dans la vidéo fournie) 
