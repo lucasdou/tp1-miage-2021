@@ -123,7 +123,7 @@ _Temps estimÃ© : 20 mins_
 On devra écrire des test d'intégration. (indiqué à 46:32 dans la vidéo fournie) 
 
 *Que teste-on dans ce cas ?*
-Si le ou les résultats renvoyés sont conformes à ce que le client voudrait.
+On test si l'ensemble de l'application fonctionne bien, une fois que tous les éléments qui la composent sont rassemblés.
 
 *S'il vous reste du temps, Ã©crire quelques uns de ces types de test.*
 
