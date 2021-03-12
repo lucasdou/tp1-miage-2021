@@ -7,10 +7,9 @@ import java.time.temporal.ChronoUnit;
  * Un item à faire, immuable
  * 
  * @author bflorat
- *
+ * 
  */
 public class TodoItem {
-
 	private static final String LATE = "[LATE!] ";
 
 	private String id;
@@ -30,7 +29,6 @@ public class TodoItem {
 	public String getContent() {
 		return this.content;
 	}
-
 	/**
 	 * Constructeur vide imposé par JPA, ne pas utiliser
 	 */
@@ -58,10 +56,14 @@ public class TodoItem {
 	 * 
 	 * @return liste des items
 	 */
+	
+	
+	
 	public String finalContent() {
 		return isLate() ? LATE + this.content : this.content;
 	}
-
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
