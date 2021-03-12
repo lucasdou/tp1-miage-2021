@@ -8,9 +8,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Un item à faire, immuable
- * 
- * @author bflorat
+ * Test correspondant à la règle de gestion 1
  * 
  */
 class TodoItemTest {
@@ -21,7 +19,7 @@ class TodoItemTest {
 
 	@Test
 	void isNotLate_itemCreationDate20Minutes_afterCurrentTime_returnsFalse() {
-	     TodoItem item = new TodoItem("1", Instant.now().minus(20,ChronoUnit.MINUTES), "mycontent"); // 20minutes de retard
+	     TodoItem item = new TodoItem("1", Instant.now().minus(20,ChronoUnit.MINUTES), "mycontent"); // 20 minutes de retard
 	     assertFalse(item.isLate());
 	}
 	
@@ -33,7 +31,7 @@ class TodoItemTest {
 	
 	@Test
 	void isLate_itemCreationDate1Day_afterCurrentTime_returnsTrue() {
-	     TodoItem item = new TodoItem("1", Instant.now().minus(25,ChronoUnit.HOURS), "mycontent");   // 25h de retard
+	     TodoItem item = new TodoItem("1", Instant.now().minus(25,ChronoUnit.HOURS), "mycontent");   // 25 heures de retard
 	     assertTrue(item.isLate());
 	}
 	
@@ -43,7 +41,7 @@ class TodoItemTest {
 	
 	@Test
 	void containsLate_itemCreationDate20Minutes_afterCurrenTime_returnsFalse() {
-	     TodoItem item = new TodoItem("1", Instant.now().minus(20,ChronoUnit.MINUTES), "mycontent"); // 20minutes de retard
+	     TodoItem item = new TodoItem("1", Instant.now().minus(20,ChronoUnit.MINUTES), "mycontent"); // 20 minutes de retard
 	     assertFalse(item.finalContent().contains("LATE" ));
 	}
 	
@@ -55,8 +53,7 @@ class TodoItemTest {
 	
 	@Test
 	void containsLate_itemCreationDate1Day_afterCurrrentTime_returnsTrue() {
-	     TodoItem item = new TodoItem("1", Instant.now().minus(25,ChronoUnit.HOURS), "mycontent");   // 25h de retard
-	     
+	     TodoItem item = new TodoItem("1", Instant.now().minus(25,ChronoUnit.HOURS), "mycontent");   // 25 heures de retard
 	     assertTrue(item.finalContent().contains("LATE" ));
 	}
 

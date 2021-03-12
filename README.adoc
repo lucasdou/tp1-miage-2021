@@ -7,7 +7,7 @@ WARNING: NE PAS OUBLIER DE MENTIONNER LES DEUX NOMS SI VOUS ETES EN BINOME!
 
 Binbing Ning et Lucas Douillard
 
-Commentaires Ã©ventuels des Ã©tudiants : #Lucas a rencontré quelques problème pour l'utilisation de la VM il a donc dû installer les différents outils manuellement.#
+Commentaires Ã©ventuels des Ã©tudiants : #Lucas a rencontré quelques problèmes pour l'utilisation de la VM il a donc dû installer les différents outils manuellement.#
 
 ## PrÃ©-requis 
 
