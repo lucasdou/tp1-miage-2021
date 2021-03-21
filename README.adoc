@@ -217,3 +217,4 @@ class SmtpServer{
 
 *MessageFormatter manipule des beans Message sans dépendances. Doit-on injecter l'objet Message ?*
 
+Non, on aura simplement besoin d'importer une librairie;
