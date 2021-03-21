@@ -176,6 +176,7 @@ class SmtpServer
 
 * Injection par setter:
 
+```java
 class MailClient{
 	SmtpServer server ;
 	MessageFormatter formatter ;
@@ -197,9 +198,11 @@ class SmtpServer{
 		this.connexion = connexion ;
 	}
 }
+```
 
 * Injection par attribut:
 
+```java
 class MailClient{
 	@Inject
 	SmtpServer server ;
@@ -210,6 +213,7 @@ class SmtpServer{
 	@Inject
 	Connexion connexion ;
 	}
-	
+```
+
 *MessageFormatter manipule des beans Message sans dépendances. Doit-on injecter l'objet Message ?*
 
