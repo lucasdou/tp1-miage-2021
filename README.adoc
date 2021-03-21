@@ -132,3 +132,82 @@ On test si l'ensemble de l'application fonctionne bien, une fois que tous les él
 - Pour tester l'adapter REST, utiliser l'annotation `@WebMvcTest(controllers = TodoListController.class)`
 - Voir cette https://spring.io/guides/gs/testing-web/[documentation]
 =====
+
+### Exercice 3 du TD - Injection de dépendance
+
+*Écrire le pseudo code d'injection entre les classes suivantes sachant que :*
+
+* ClientMail a besoin d'un ServerMail
+
+* ClientMail a besoin d'un MessageFormatter (singleton)
+
+* ServerMail a besoin d'une Connection
+
+*Le faire avec chacune des trois types d'injection.*
+
+* Injection par constructeur :
+
+class MailClient
+{
+	SmtpServer server ;
+	MessageFormatter ;
+	@Inject
+	public MailClient(SmtpServer server,MessageFormatter formatter){
+		this.server = server ; this.formatter= formatter ;
+	}
+	public void envoyerMail(Mail mail){
+		server.send(formater.format(mail)) ;
+	}
+}
+class SmtpServer
+{
+	Connexion connexion ;
+	@Inject
+	public SmtpServer(Connexion connexion){
+		this.connexion = connexion ;
+	}
+	public void send(Mail mail){
+		connexion.open() ;
+		connexion.write(formater.format(mail)) ;
+	}
+}
+
+* Injection par setter:
+
+class MailClient{
+	SmtpServer server ;
+	MessageFormatter formatter ;
+	public MailClient(){}
+	@Inject
+	public void setServer(SmtpServer Server){
+		this.server = server;
+	}
+	@Inject
+	public void setFormatter(MessageFormatter formatter){
+		this.formatter = formatter;
+	}
+}
+class SmtpServer{
+	Connexion connexion ;
+	public SmtpServer(){}
+	@Inject
+	public void setConnexion(Connexion connexion){
+		this.connexion = connexion ;
+	}
+}
+
+* Injection par attribut:
+
+class MailClient{
+	@Inject
+	SmtpServer server ;
+	@Inject	
+	MessageFormatter formatter ;
+	}
+class SmtpServer{
+	@Inject
+	Connexion connexion ;
+	}
+	
+*MessageFormatter manipule des beans Message sans dépendances. Doit-on injecter l'objet Message ?*
+
