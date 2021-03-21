@@ -147,6 +147,7 @@ On test si l'ensemble de l'application fonctionne bien, une fois que tous les él
 
 * Injection par constructeur :
 
+```java
 class MailClient
 {
 	SmtpServer server ;
@@ -171,6 +172,7 @@ class SmtpServer
 		connexion.write(formater.format(mail)) ;
 	}
 }
+```
 
 * Injection par setter:
 
