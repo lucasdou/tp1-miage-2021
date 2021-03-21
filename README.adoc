@@ -148,8 +148,7 @@ On test si l'ensemble de l'application fonctionne bien, une fois que tous les él
 * Injection par constructeur :
 
 ```java
-class MailClient
-{
+class MailClient{
 	SmtpServer server ;
 	MessageFormatter ;
 	@Inject
@@ -157,8 +156,7 @@ class MailClient
 		this.server = server ; this.formatter= formatter ;
 	}
 }
-class SmtpServer
-{
+class SmtpServer{
 	Connexion connexion ;
 	@Inject
 	public SmtpServer(Connexion connexion){
