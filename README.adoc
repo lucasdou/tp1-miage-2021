@@ -156,9 +156,6 @@ class MailClient
 	public MailClient(SmtpServer server,MessageFormatter formatter){
 		this.server = server ; this.formatter= formatter ;
 	}
-	public void envoyerMail(Mail mail){
-		server.send(formater.format(mail)) ;
-	}
 }
 class SmtpServer
 {
@@ -166,10 +163,6 @@ class SmtpServer
 	@Inject
 	public SmtpServer(Connexion connexion){
 		this.connexion = connexion ;
-	}
-	public void send(Mail mail){
-		connexion.open() ;
-		connexion.write(formater.format(mail)) ;
 	}
 }
 ```
